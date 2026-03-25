@@ -32,7 +32,7 @@ export default function App() {
     const [toasts, setToasts] = useState([])
     const [showNewProject, setShowNewProject] = useState(false)
     const [newProjectName, setNewProjectName] = useState('')
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
 
     // Toast helper
     function toast(msg, type = 'info') {
@@ -101,7 +101,7 @@ export default function App() {
 
     // Mobile detect
     useEffect(() => {
-        const handler = () => setIsMobile(window.innerWidth < 768)
+        const handler = () => setIsMobile(window.innerWidth < 1024)
         window.addEventListener('resize', handler)
         return () => window.removeEventListener('resize', handler)
     }, [])
