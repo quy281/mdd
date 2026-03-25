@@ -275,6 +275,47 @@ export default function App() {
                                 />
                             )}
                         </div>
+                        {isMobile && selectedDoc && (
+                            <div style={{ position: 'absolute', bottom: 80, right: 16, display: 'flex', flexDirection: 'column', gap: 12, zIndex: 60 }}>
+                                {annMode !== 'off' && (
+                                    <button
+                                        onClick={() => toggleAnnotation('off')}
+                                        style={{
+                                            width: 44, height: 44, borderRadius: '50%',
+                                            background: 'var(--c-surface)', color: 'var(--c-text)',
+                                            border: '1px solid var(--c-border)', boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                            fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                        }}
+                                    >
+                                        ✕
+                                    </button>
+                                )}
+                                <button
+                                    onClick={() => toggleAnnotation('highlight')}
+                                    style={{
+                                        width: 44, height: 44, borderRadius: '50%',
+                                        background: annMode === 'highlight' ? 'var(--c-accent)' : 'var(--c-surface)',
+                                        color: annMode === 'highlight' ? '#fff' : 'var(--c-text)',
+                                        border: '1px solid var(--c-border)', boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                        fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    }}
+                                >
+                                    🖊
+                                </button>
+                                <button
+                                    onClick={() => toggleAnnotation('draw')}
+                                    style={{
+                                        width: 44, height: 44, borderRadius: '50%',
+                                        background: annMode === 'draw' ? 'var(--c-accent)' : 'var(--c-surface)',
+                                        color: annMode === 'draw' ? '#fff' : 'var(--c-text)',
+                                        border: '1px solid var(--c-border)', boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                        fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center'
+                                    }}
+                                >
+                                    ✏️
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
 

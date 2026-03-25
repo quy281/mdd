@@ -746,6 +746,9 @@ a:hover {
   color: var(--c-text);
   flex: 1;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .focus-btn {
@@ -786,6 +789,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .ann-mode-btn {
