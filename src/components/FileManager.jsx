@@ -21,7 +21,7 @@ function fmtDate(d) {
     return new Date(d).toLocaleDateString('vi-VN')
 }
 
-export default function FileManager({ projects, selectedProject, onUpload, onSelectDoc, onDeleteDoc }) {
+export default function FileManager({ projects, selectedProject, onSelectProject, onUpload, onSelectDoc, onDeleteDoc }) {
     const [recentDocs, setRecentDocs] = useState([])
     const [expandedFolders, setExpandedFolders] = useState({})
 
@@ -70,7 +70,7 @@ export default function FileManager({ projects, selectedProject, onUpload, onSel
                 </h2>
             </div>
 
-            <FileDropper onUpload={onUpload} project={selectedProject} />
+            <FileDropper onUpload={onUpload} project={selectedProject} projects={projects} onSelectProject={onSelectProject} />
 
             {!selectedProject && recentDocs.length > 0 && (
                 <>

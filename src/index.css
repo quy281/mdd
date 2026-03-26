@@ -611,6 +611,56 @@ a:hover {
 }
 
 /* ─── File Dropper ────────────────────────────────────────────────────────── */
+.file-dropper-wrapper {
+  margin-bottom: 24px;
+}
+
+.folder-target-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+}
+
+.folder-target-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-text2);
+  white-space: nowrap;
+  margin-right: 4px;
+}
+
+.folder-target-btn {
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 13px;
+  color: var(--c-text3);
+  border: 1px solid var(--c-border2);
+  background: var(--c-surface);
+  transition: background var(--t), color var(--t), border-color var(--t);
+  cursor: pointer;
+  white-space: nowrap;
+  /* Touch-friendly size for mobile */
+  min-height: 36px;
+}
+
+.folder-target-btn:hover {
+  background: var(--c-surface2);
+  color: var(--c-text);
+}
+
+.folder-target-btn.active {
+  background: var(--c-accent-bg);
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+  font-weight: 500;
+}
+
 .file-dropper {
   border: 2px dashed var(--c-border2);
   border-radius: var(--r-lg);
@@ -619,10 +669,15 @@ a:hover {
   color: var(--c-text3);
   cursor: pointer;
   transition: border-color var(--t), background var(--t), color var(--t);
-  margin-bottom: 24px;
 }
 
-.file-dropper:hover,
+.file-dropper.disabled {
+  opacity: 0.6;
+  cursor: default;
+  border-style: dashed;
+}
+
+.file-dropper:hover:not(.disabled),
 .file-dropper.drag-over {
   border-color: var(--c-accent);
   background: var(--c-accent-bg);
@@ -636,12 +691,14 @@ a:hover {
 
 .file-dropper p {
   font-size: 14px;
+  line-height: 1.6;
 }
 
 .file-dropper small {
   font-size: 12px;
   color: var(--c-text3);
 }
+
 
 /* ─── Notes Manager ───────────────────────────────────────────────────────── */
 .notes-manager {

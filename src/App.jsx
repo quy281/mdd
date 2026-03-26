@@ -324,6 +324,7 @@ export default function App() {
                     <FileManager
                         projects={projects}
                         selectedProject={selectedProject}
+                        onSelectProject={(p) => { setSelectedProject(p) }}
                         onUpload={handleUpload}
                         onSelectDoc={handleSelectDoc}
                         onDeleteDoc={handleDeleteDoc}
