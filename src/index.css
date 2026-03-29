@@ -1149,3 +1149,66 @@ a:hover {
   margin: 16px 0;
   overflow-x: auto;
 }
+
+/* ─── Print Layout ────────────────────────────────────────────────────────── */
+@media print {
+  /* Remove height limits and allow scrolling/expansion */
+  html, body, #root, .app-layout, .main-content, .paper-container, .focus-overlay, .focus-content, .md-content {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    position: static !important;
+  }
+
+  /* Hide UI components not needed in print */
+  .sidebar, 
+  .toolbar, 
+  .bottom-nav, 
+  .ann-mode-bar, 
+  .focus-toolbar, 
+  .toast-container, 
+  .modal-backdrop,
+  .file-manager-header,
+  .file-grid,
+  .file-dropper-wrapper,
+  .file-manager,
+  .notes-manager,
+  .annotation-canvas,
+  ::-webkit-scrollbar,
+  button {
+    display: none !important;
+  }
+
+  /* Expand paper container to full width and remove padding */
+  .paper-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+  
+  .focus-content {
+    padding: 0 !important;
+  }
+
+  /* Ensure text is standard color for printers */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  
+  .md-content {
+    color: #000 !important;
+  }
+  
+  .md-content pre {
+    border: 1px solid #ccc !important;
+    background: #f9f9f9 !important;
+    color: #000 !important;
+  }
+  
+  .md-content pre code {
+    color: #000 !important;
+  }
+}
