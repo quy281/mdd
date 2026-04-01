@@ -377,6 +377,44 @@ a:hover {
   white-space: nowrap;
 }
 
+/* ─── Inline MD Editor ───────────────────────────────────────────────────── */
+.editor-container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.md-editor {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 32px 40px;
+  background: var(--c-bg);
+  border: none;
+  border-radius: 0;
+  color: var(--c-text);
+  outline: none;
+}
+
+.md-editor:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.toolbar-btn.save-btn {
+  background: var(--c-success);
+  color: #fff;
+  font-weight: 600;
+}
+
+.toolbar-btn.save-btn:hover {
+  background: #15803d;
+  color: #fff;
+}
+
 /* ─── Paper / Document Viewer ─────────────────────────────────────────────── */
 .paper-container {
   flex: 1;

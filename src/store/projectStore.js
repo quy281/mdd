@@ -76,6 +76,14 @@ export async function saveDocument(projectId, fileName, content, type) {
     return record
 }
 
+export async function updateDocument(docId, content) {
+    const record = await pb.collection('hoso_documents').update(docId, { content })
+    // Write-through to IDB
+    const cached = (await idbGet(LS_DOCS)) || []
+    await idbSet(LS_DOCS, cached.map((d) => (d.id === docId ? record : d)))
+    return record
+}
+
 export async function deleteDocument(projectId, docId) {
     // Delete annotations first
     const annResult = await pb.collection('hoso_annotations').getList(1, 500, {

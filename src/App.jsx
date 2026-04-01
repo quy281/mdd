@@ -12,6 +12,7 @@ import {
     createProject,
     deleteProject,
     saveDocument,
+    updateDocument,
     deleteDocument,
     getAllAnnotations,
     saveAnnotation,
@@ -226,6 +227,23 @@ export default function App() {
         window.print()
     }
 
+    async function handleSaveDoc(newContent) {
+        if (!selectedDoc) return
+        try {
+            const updated = await updateDocument(selectedDoc.id, newContent)
+            // Update local state
+            setSelectedDoc((d) => d ? { ...d, content: newContent, ...updated } : d)
+            setProjects((prev) => prev.map((p) =>
+                p.id === (selectedProject?.id || selectedDoc.project_id)
+                    ? { ...p, documents: (p.documents || []).map((d) => d.id === selectedDoc.id ? { ...d, content: newContent, ...updated } : d) }
+                    : p
+            ))
+            toast('Đã lưu file', 'success')
+        } catch (e) {
+            toast('Lỗi lưu file: ' + e.message, 'error')
+        }
+    }
+
     // ─── Render ──────────────────────────────────────────────────────────────────
 
     const docAnnotations = annotations.filter((a) => a.document_id === selectedDoc?.id)
@@ -258,6 +276,7 @@ export default function App() {
                         annMode={annMode}
                         onPrint={handlePrint}
                         onDeleteDoc={handleDeleteDoc}
+                        onSaveDoc={handleSaveDoc}
                     />
                 )}
 
